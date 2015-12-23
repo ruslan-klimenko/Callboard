@@ -3,7 +3,7 @@ package org.agileengine.callboard.application.logging;
 import org.agileengine.callboard.application.ApplicationData;
 import org.agileengine.callboard.model.persistence.logging.ApplicationLog;
 import org.agileengine.callboard.persistence.dao.logging.ApplicationLogDAOImpl;
-import org.agileengine.callboard.service.exception.ApplicationException;
+import org.agileengine.callboard.application.exception.ApplicationException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,8 +14,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-    @Autowired
     private ApplicationLogDAOImpl applicationLogDAO;
+
+    @Autowired
+    public LoggingAspect(ApplicationLogDAOImpl applicationLogDAO) {
+        this.applicationLogDAO = applicationLogDAO;
+    }
 
     @Around("@annotation("+ ApplicationData.PACKAGE_LOGGING +".Loggable)")
     public Object applicationAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){

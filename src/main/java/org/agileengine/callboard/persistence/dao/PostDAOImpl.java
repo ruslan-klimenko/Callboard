@@ -39,8 +39,13 @@ public class PostDAOImpl implements PostDAO {
                                                     " WHERE " + Post.TABLE_ID +
                                                      " = (SELECT max("+Post.TABLE_ID+") FROM " + Post.TABLE_NAME + ")";
 
-    @Autowired
+
     private NamedParameterJdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public PostDAOImpl(NamedParameterJdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public Post create(Post post) {

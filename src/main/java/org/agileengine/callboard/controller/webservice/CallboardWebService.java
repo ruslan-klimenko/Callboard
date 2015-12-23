@@ -7,7 +7,7 @@ import org.agileengine.callboard.model.dto.GenericErrorDTO;
 import org.agileengine.callboard.model.dto.GenericGetDTO;
 import org.agileengine.callboard.model.persistence.Post;
 import org.agileengine.callboard.service.PostService;
-import org.agileengine.callboard.service.exception.ApplicationException;
+import org.agileengine.callboard.application.exception.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,12 @@ public class CallboardWebService {
 
     public static final String SERVICE_PATH = "service" + Path.SLASH + "callboard";
 
-    @Autowired
     private PostService postService;
+
+    @Autowired
+    public CallboardWebService(PostService postService) {
+        this.postService = postService;
+    }
 
     @RequestMapping(path = Path.SLASH + "get", method = RequestMethod.POST)
     public ResponseEntity<GenericGetDTO<Post>> get() {

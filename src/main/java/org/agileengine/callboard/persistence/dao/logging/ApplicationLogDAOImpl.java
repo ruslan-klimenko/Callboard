@@ -18,8 +18,13 @@ public class ApplicationLogDAOImpl {
                                                                             ApplicationLog.COLUMN_OCCURRENCE + ", :" +
                                                                             ApplicationLog.COLUMN_RESULT+")";
 
-    @Autowired
+
     private NamedParameterJdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public ApplicationLogDAOImpl(NamedParameterJdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public void create(ApplicationLog applicationLog) {
         jdbcTemplate.update(QUERY_INSERT_APPLICATION_LOG, createParamsMap(applicationLog));

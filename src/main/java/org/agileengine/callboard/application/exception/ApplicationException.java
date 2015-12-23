@@ -1,4 +1,4 @@
-package org.agileengine.callboard.service.exception;
+package org.agileengine.callboard.application.exception;
 
 public class ApplicationException extends RuntimeException {
 

@@ -4,7 +4,7 @@ import org.agileengine.callboard.controller.RequestUtil;
 import org.agileengine.callboard.application.logging.Loggable;
 import org.agileengine.callboard.model.persistence.Post;
 import org.agileengine.callboard.persistence.dao.PostDAO;
-import org.agileengine.callboard.service.exception.ApplicationException;
+import org.agileengine.callboard.application.exception.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,8 +13,12 @@ import java.util.Map;
 @Service
 public class PostService {
 
-    @Autowired
     private PostDAO postDAO;
+
+    @Autowired
+    public PostService(PostDAO postDAO) {
+        this.postDAO = postDAO;
+    }
 
     public List<Post> findAll() {
         return postDAO.findAll();

@@ -1,6 +1,6 @@
 package org.agileengine.callboard.service;
 
-import org.agileengine.callboard.service.exception.ApplicationException;
+import org.agileengine.callboard.application.exception.ApplicationException;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 import org.agileengine.callboard.application.configuration.TestConfig;

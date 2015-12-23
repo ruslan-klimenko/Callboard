@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <post id_post="1" topic="firstTopic" message="firstMessage" />
+    <post id_post="2" topic="secondTopic" message="secondMessage" />
+</dataset>

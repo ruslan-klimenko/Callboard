@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="org.agileengine.callboard.model.dto.GenericErrorDTO" />
+    <Field name="message" />
+    <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
+  </Match>
+</FindBugsFilter>

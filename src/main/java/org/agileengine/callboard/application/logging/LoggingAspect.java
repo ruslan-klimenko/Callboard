@@ -29,14 +29,14 @@ public class LoggingAspect {
         applicationLogBuilder.setOccurrence(proceedingJoinPoint.toString());
 
         try {
-
+            Object result = proceedingJoinPoint.proceed();
             applicationLogDAO.create(applicationLogBuilder
                     .setCompleted(true)
-                    .setResult(proceedingJoinPoint.proceed() == null ?
-                            "Empty value" : proceedingJoinPoint.proceed().toString())
+                    .setResult(result == null ?
+                            "Empty value" : result.toString())
                     .build());
 
-            return proceedingJoinPoint.proceed();
+            return result;
         } catch (Throwable e) {
 
             applicationLogDAO.create(applicationLogBuilder
